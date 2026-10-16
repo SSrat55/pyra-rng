@@ -1190,3 +1190,33 @@ async function initializePage() {
 drawButton.addEventListener('click', () => startRoll());
 rerollButton.addEventListener('click', () => startRoll(true));
 initializePage();
+// Przelaczanie jasnego i ciemnego motywu
+(() => {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+
+  const root = document.documentElement;
+  const key = "pyra-rng-theme";
+
+  function setTheme(theme) {
+    root.dataset.theme = theme;
+    btn.textContent = theme === "dark"
+      ? "☀️ Jasny motyw"
+      : "🌙 Ciemny motyw";
+  }
+
+  let saved = "light";
+  try {
+    saved = localStorage.getItem(key) || "light";
+  } catch {}
+
+  setTheme(saved);
+
+  btn.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    try {
+      localStorage.setItem(key, next);
+    } catch {}
+  });
+})();
