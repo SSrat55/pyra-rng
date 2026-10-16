@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4efe2" />
+    <meta name="description" content="Kliknij i wylosuj ziemniaka. Czy trafisz na zwykłą pyrę, rzadką sztukę, a może legendę?" />
+    <title>Pyra RNG — generator ziemniaków</title>
+    <link rel="preconnect" href="https://upload.wikimedia.org" />
+    <link rel="preconnect" href="https://commons.wikimedia.org" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Pyra RNG — strona główna">
+          <span class="brand-mark" aria-hidden="true">🥔</span>
+          <span>PYRA<span class="brand-light">RNG</span></span>
+        </a>
+        <span class="top-note"><span class="live-dot" aria-hidden="true"></span> Ziemniak czeka na Ciebie</span>
+      </header>
+
+      <section class="intro" id="top" aria-labelledby="page-title">
+        <p class="eyebrow">MAŁE LOSOWANIE. WIELKIE EMOCJE.</p>
+        <h1 id="page-title">Jaki ziemniak<br /><span>wpadnie dziś?</span></h1>
+        <p class="intro-copy">Kliknij i sprawdź, czy trafisz na zwykłą pyrę, kolorowy okaz, a może mityczny ziemniak.</p>
+      </section>
+
+      <section class="generator" aria-label="Generator ziemniaków">
+        <div class="result-card" id="result-card" data-rarity="none" aria-live="polite">
+          <div class="photo-wrap" id="photo-wrap">
+            <div class="empty-state" id="empty-state">
+              <span class="empty-potato" aria-hidden="true">🥔</span>
+              <span class="empty-label">Miejsce na Twoją pyrę</span>
+            </div>
+            <img class="potato-photo" id="potato-photo" alt="" hidden />
+            <span class="photo-shine" aria-hidden="true"></span>
+          </div>
+          <div class="result-info">
+            <div class="result-topline">
+              <span class="rarity-badge" id="rarity-badge">GOTOWY?</span>
+              <span class="chance" id="chance-label">Kliknij, żeby odkryć</span>
+            </div>
+            <h2 class="potato-name" id="potato-name">Twoja przygoda zaczyna się tutaj</h2>
+            <p class="potato-caption" id="potato-caption">Każde losowanie to nowa szansa na ziemniaczaną sławę.</p>
+            <a class="photo-credit" id="photo-credit" href="https://commons.wikimedia.org/wiki/Main_Page" target="_blank" rel="noreferrer" hidden>Źródło zdjęcia</a>
+            <div class="share-result" id="share-result" hidden>
+              <button class="share-button" id="share-button" type="button">📣 Udostępnij pyrę</button>
+              <button class="share-button save-card-button" id="save-card-button" type="button">💾 Pobierz kartę PNG</button>
+              <span class="share-status" id="share-status" role="status" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+
+        <button class="draw-button" id="draw-button" type="button">
+          <span class="button-spark" aria-hidden="true">✦</span>
+          <span class="button-label">Losuj ziemniaka</span>
+          <span class="button-arrow" aria-hidden="true">↗</span>
+        </button>
+        <button class="reroll-button" id="reroll-button" type="button" hidden>🎲 Przerzuć jeszcze raz</button>
+        <div class="draw-meta">
+          <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="true" aria-label="Wyłącz dźwięki">
+            <span class="sound-toggle-icon" aria-hidden="true">🔊</span>
+            <span id="sound-toggle-label">Dźwięki włączone</span>
+          </button>
+          <p class="draw-hint" id="draw-hint">Nie ma limitu losowań. Powodzenia, kolekcjonerze!</p>
+        </div>
+      </section>
+
+      <section class="stats-strip" aria-label="Twoje statystyki">
+        <article class="stat-card">
+          <span class="stat-number" id="draw-count">0</span>
+          <span class="stat-label">Losowania</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-number" id="unlocked-count">0/100</span>
+          <span class="stat-label">Ziemniaki w albumie</span>
+        </article>
+        <article class="stat-card">
+          <span class="stat-number" id="special-count">0</span>
+          <span class="stat-label">Rzadkie trafienia</span>
+        </article>
+        <article class="stat-card coin-stat-card">
+          <span class="stat-number"><span id="coin-count">0</span> <span class="coin-symbol" aria-hidden="true">🪙</span></span>
+          <span class="stat-label">Monety</span>
+        </article>
+      </section>
+
+      <section class="shop-section" aria-labelledby="shop-title">
+        <div class="section-heading shop-heading">
+          <div>
+            <p class="eyebrow">WYDAJ SWÓJ ZIEMNIACZANY MAJĄTEK</p>
+            <h2 id="shop-title">Sklep Pyrowy</h2>
+          </div>
+          <span class="shop-balance"><span id="shop-coin-count">0</span> 🪙</span>
+        </div>
+        <div class="shop-grid" id="shop-grid"></div>
+        <p class="shop-notice" id="shop-notice" role="status" aria-live="polite">Za każde losowanie dostajesz monety.</p>
+      </section>
+
+      <section class="achievements-section" aria-labelledby="achievements-title">
+        <div class="section-heading achievements-heading">
+          <div>
+            <p class="eyebrow">MAŁE WIELKIE SUKCESY</p>
+            <h2 id="achievements-title">Osiągnięcia</h2>
+          </div>
+          <span class="achievement-count" id="achievement-count" aria-live="polite">0/9 zdobytych</span>
+        </div>
+        <div class="achievement-grid" id="achievement-grid"></div>
+      </section>
+
+      <section class="odds-section" aria-labelledby="odds-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">JAKIE SĄ SZANSE?</p>
+            <h2 id="odds-title">Poziomy rzadkości</h2>
+          </div>
+          <p class="odds-note">Procent pokazuje szansę na dany poziom w jednym losowaniu.</p>
+        </div>
+        <div class="odds-grid">
+          <article class="odds-card common-card">
+            <span class="odds-icon" aria-hidden="true">🥔</span>
+            <span class="odds-name">Zwykły</span>
+            <strong data-odds-chance="common">60%</strong>
+            <span class="odds-description">Zwykła, słaba lub z kiełkami</span>
+          </article>
+          <article class="odds-card uncommon-card">
+            <span class="odds-icon" aria-hidden="true">🌟</span>
+            <span class="odds-name">Niezwykły</span>
+            <strong data-odds-chance="uncommon">23,9%</strong>
+            <span class="odds-description">Czerwona rakieta</span>
+          </article>
+          <article class="odds-card rare-card">
+            <span class="odds-icon" aria-hidden="true">✨</span>
+            <span class="odds-name">Rzadki</span>
+            <strong data-odds-chance="rare">10%</strong>
+            <span class="odds-description">Złota Yukon</span>
+          </article>
+          <article class="odds-card epic-card">
+            <span class="odds-icon" aria-hidden="true">💎</span>
+            <span class="odds-name">Epicki</span>
+            <strong data-odds-chance="epic">5%</strong>
+            <span class="odds-description">Fioletowa Vitelotte</span>
+          </article>
+          <article class="odds-card legendary-card">
+            <span class="odds-icon" aria-hidden="true">👑</span>
+            <span class="odds-name">Legendarny</span>
+            <strong data-odds-chance="legendary">1%</strong>
+            <span class="odds-description">Błękitna Anneliese</span>
+          </article>
+          <article class="odds-card mythic-card">
+            <span class="odds-icon" aria-hidden="true">🌌</span>
+            <span class="odds-name">Mityczny</span>
+            <strong data-odds-chance="mythic">0,1%</strong>
+            <span class="odds-description">Peruwiański skarb</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="album-section" aria-labelledby="album-title">
+        <div class="section-heading album-heading">
+          <div>
+            <p class="eyebrow">ZBIERZ JE WSZYSTKIE</p>
+            <h2 id="album-title">Album ziemniaków</h2>
+          </div>
+          <p class="odds-note">Odkryte ziemniaki zostają w albumie. Postęp zapisuje się w tej przeglądarce.</p>
+        </div>
+        <button class="album-toggle" id="album-toggle" type="button" aria-expanded="false" aria-controls="album-content">
+          <span class="album-toggle-book" aria-hidden="true">📖</span>
+          <span class="album-toggle-label">Otwórz album</span>
+          <span class="album-toggle-count" id="album-toggle-count">0/100</span>
+          <span class="album-toggle-arrow" aria-hidden="true">⌄</span>
+        </button>
+        <div class="album-content" id="album-content" hidden>
+          <div class="album-filters" role="group" aria-label="Kategorie rzadkości">
+            <button class="album-filter is-active" type="button" data-album-filter="all" aria-pressed="true">Wszystkie</button>
+            <button class="album-filter" type="button" data-album-filter="common" aria-pressed="false">Zwykłe</button>
+            <button class="album-filter" type="button" data-album-filter="uncommon" aria-pressed="false">Niezwykłe</button>
+            <button class="album-filter" type="button" data-album-filter="rare" aria-pressed="false">Rzadkie</button>
+            <button class="album-filter" type="button" data-album-filter="epic" aria-pressed="false">Epickie</button>
+            <button class="album-filter" type="button" data-album-filter="legendary" aria-pressed="false">Legendarne</button>
+            <button class="album-filter" type="button" data-album-filter="mythic" aria-pressed="false">Mityczne</button>
+          </div>
+          <div class="album-progress" aria-label="Postęp albumu">
+            <span id="album-progress-text">0 z 100 odkrytych</span>
+            <span id="album-result-count">0 ziemniaków</span>
+            <div class="progress-track"><span id="album-progress-bar"></span></div>
+          </div>
+          <div class="album-grid" id="album-grid"></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Zrobione z miłości do ziemniaków <span aria-hidden="true">♥</span></span>
+        <span>Zdjęcia pochodzą z Wikimedia Commons — źródło każdego znajdziesz pod wylosowaną pyrą.</span>
+      </footer>
+      <div class="achievement-toast" id="achievement-toast" role="status" aria-live="polite" hidden></div>
+    </main>
+  </body>
+</html>
