@@ -40,6 +40,9 @@
           <span>PYRA<span class="brand-light">RNG</span></span>
         </a>
         <span class="top-note"><span class="live-dot" aria-hidden="true"></span> Ziemniak czeka na Ciebie</span>
+        <button class="theme-toggle" id="theme-toggle" type="button">
+  🌙 Ciemny motyw
+</button>
       </header>
 
       <section class="intro" id="top" aria-labelledby="page-title">
@@ -220,3 +223,31 @@
     </main>
   </body>
 </html>
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #f4e8d8;
+  --muted: #cbb6a0;
+  --paper: #30231d;
+  --paper-deep: #3d2b21;
+  --card: #493327;
+  --orange: #e6a16a;
+  --orange-deep: #edb17d;
+  --green: #a5b98a;
+  --line: rgba(245, 225, 203, .15);
+  --shadow: 0 24px 70px rgba(0, 0, 0, .24);
+}
+
+:root[data-theme="dark"] body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.theme-toggle {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 700;
+}
