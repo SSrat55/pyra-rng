@@ -674,4 +674,51 @@ h1 span { color: var(--orange); }
   }
 }
 
+/* ===== Zielone akcenty Pyra RNG ===== */
+
+.draw-button {
+  background: var(--green);
+  color: #fffdf2;
+  box-shadow: 0 8px 20px rgba(91, 112, 65, .22);
+}
+
+.draw-button:hover {
+  background: #687b50;
+  box-shadow: 0 12px 26px rgba(91, 112, 65, .28);
+}
+
+.draw-button:disabled {
+  background: #687b50;
+}
+
+.button-arrow {
+  color: #edf2dc;
+}
+
+.stat-number {
+  color: var(--green);
+}
+
+.shop-buy {
+  background: var(--green);
+}
+
+.shop-buy:hover:not(:disabled) {
+  background: #687b50;
+}
+
+.album-filter.is-active {
+  border-color: var(--green);
+  background: var(--green);
+}
+
+.album-toggle:hover {
+  border-color: var(--green);
+}
+
+.achievement-count {
+  border-color: rgba(125, 145, 98, .4);
+  color: var(--green);
+}
+
 
