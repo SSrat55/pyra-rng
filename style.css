@@ -2,14 +2,14 @@
 
 :root {
   color-scheme: light;
-  --ink: #27251f;
-  --muted: #817b6e;
-  --paper: #f4efe2;
-  --paper-deep: #e9e0cf;
-  --card: #fffdf8;
-  --orange: #d87835;
-  --orange-deep: #a94d20;
-  --green: #71895b;
+  --ink: #594334;
+  --muted: #765e49;
+  --paper: #e9ddc7;
+  --paper-deep: #dfd0b6;
+  --card: #f5ebdd;
+  --orange: #c87943;
+  --orange-deep: #985b31;
+  --green: #7d9162;
   --line: rgba(66, 54, 35, .12);
   --shadow: 0 24px 70px rgba(65, 47, 24, .11);
 }
