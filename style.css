@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 8%, rgba(239, 199, 132, .28), transparent 26rem),
+    radial-gradient(circle at 92% 45%, rgba(180, 194, 137, .18), transparent 28rem),
+    var(--paper);@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
   color-scheme: light;
@@ -19,12 +25,6 @@
 body {
   min-width: 320px;
   min-height: 100vh;
-  margin: 0;
-  color: var(--ink);
-  background:
-    radial-gradient(circle at 10% 8%, rgba(239, 199, 132, .28), transparent 26rem),
-    radial-gradient(circle at 92% 45%, rgba(180, 194, 137, .18), transparent 28rem),
-    var(--paper);
   font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -520,3 +520,157 @@ h1 span { color: var(--orange); }
   cursor: pointer;
   font-weight: 700;
 }
+
+/* ===== Rozbudowana stopka Pyra RNG ===== */
+.site-footer {
+  margin-top: 72px;
+  padding: 30px 0 22px;
+  border-top: 1px solid var(--line);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.35fr;
+  gap: 30px;
+}
+
+.footer-column {
+  min-width: 0;
+}
+
+.footer-column h2 {
+  margin: 0 0 13px;
+  color: var(--ink);
+  font: 700 14px 'Space Grotesk', sans-serif;
+  letter-spacing: -.02em;
+}
+
+.footer-column p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.footer-column .footer-dev-name {
+  margin-bottom: 5px;
+  color: var(--orange-deep);
+  font-weight: 700;
+}
+
+.footer-column .footer-community-lead {
+  margin-bottom: 5px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 9px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  text-decoration: none;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.footer-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(216, 120, 53, .45);
+}
+
+.footer-link:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.footer-link-icon {
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--paper-deep);
+  font-size: 17px;
+}
+
+.footer-link > span:nth-child(2) {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.footer-link strong {
+  color: var(--ink);
+  font-size: 10px;
+}
+
+.footer-link small {
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.footer-link-arrow {
+  margin-left: auto;
+  color: var(--orange-deep);
+  font-size: 15px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 28px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.footer-bottom span:last-child {
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .site-footer {
+    margin-top: 54px;
+    padding-top: 25px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
+  }
+
+  .footer-column:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-bottom span:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 460px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .footer-column:last-child {
+    grid-column: auto;
+  }
+}
+
+
